@@ -17,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:sanctum')->get('/user/data', function (Request $request) {
+    $data = [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        // 他のデータも追加可能
+    ];
+
+    return response()->json($data);
+});
