@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/user/data', function (Request $request) {
+Route::get('/user/data', function (Request $request) {
     $data = [
         'name' => 'John Doe',
         'email' => 'john@example.com',
@@ -27,3 +28,5 @@ Route::middleware('auth:sanctum')->get('/user/data', function (Request $request)
 
     return response()->json($data);
 });
+
+Route::get('/items', [ItemController::class, 'index']);
